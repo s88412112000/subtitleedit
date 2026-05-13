@@ -1,61 +1,61 @@
-# SubRip (SRT) Format Reference
+# SubRip (SRT) 格式參考
 
-SubRip (file extension `.srt`) is one of the most widely used subtitle formats, known for its simplicity and broad compatibility.
+SubRip (副檔名 `.srt`) 是最廣泛使用的字幕格式之一，以其簡單性與廣泛的相容性而聞名。
 
-## Overview
+## 總覽
 
-SubRip was created by French programmer [Brain](https://web.archive.org/web/20031026223830/http://membres.lycos.fr/subrip/) in 2000 for the [SubRip](https://www.videohelp.com/software/Subrip) program (written in Borland Delphi). Despite being over two decades old, it remains the most popular subtitle format today and is the default format in Subtitle Edit.
+SubRip 是由法國程式設計師 [Brain](https://web.archive.org/web/20031026223830/http://membres.lycos.fr/subrip/) 在 2000 年為 [SubRip](https://www.videohelp.com/software/Subrip) 程式（使用 Borland Delphi 撰寫）所建立。儘管已有超過二十年的歷史，它至今仍是最受歡迎的字幕格式，同時也是 Subtitle Edit 的預設格式。
 
-**Key Features:**
-- Simple, human-readable plain text format
-- Can be edited in any text editor
-- Widely supported by video players, editors, and converters
-- Can be [embedded into Matroska (MKV) files](https://www.matroska.org/technical/subtitles.html)
-- Supports basic formatting (italic, bold, underline, colors)
-- Supports some ASS-style tags for advanced positioning
+**主要特點：**
+- 簡單、人類可讀的純文字格式
+- 可以在任何文字編輯器中編輯
+- 受到影片播放器、編輯器與轉換器的廣泛支援
+- 可以 [內嵌到 Matroska (MKV) 檔案中](https://www.matroska.org/technical/subtitles.html)
+- 支援基本格式設定 (斜體、粗體、底線、顏色)
+- 支援部分 ASS 樣式的標籤，用於進階定位
 
-**Pros:**
-- ✅ Very simple format, easy to learn and use
-- ✅ Can be edited in any text editor
-- ✅ Excellent support in players/converters
-- ✅ Small file size
-- ✅ Human-readable
+**優點：**
+- ✅ 格式非常簡單，易於學習和使用
+- ✅ 可以在任何文字編輯器中編輯
+- ✅ 在播放器/轉換器中擁有極佳的支援度
+- ✅ 檔案大小很小
+- ✅ 人類可讀
 
-**Cons:**
-- ❌ No official specification
-- ❌ Limited styling options compared to ASSA
-- ❌ Inconsistent tag support across players
-- ❌ No built-in font/size control in basic format
+**缺點：**
+- ❌ 沒有官方規範
+- ❌ 與 ASSA 相比，樣式選項有限
+- ❌ 各個播放器對標籤的支援不一致
+- ❌ 在基本格式中沒有內建字型/大小控制
 
-## File Structure
+## 檔案結構
 
-A SubRip file consists of sequential subtitle blocks, each containing:
+一個 SubRip 檔案由連續的字幕區塊組成，每個區塊包含：
 
-1. **Sequence number** — A unique number for each subtitle (starting from 1)
-2. **Timecode** — Start and end time separated by ` --> `
-3. **Text** — One or more lines of subtitle text
-4. **Blank line** — Separator between subtitle blocks
+1. **序號** — 每個字幕的唯一編號 (從 1 開始)
+2. **時間碼** — 開始和結束時間，以 ` --> ` 分隔
+3. **文字** — 一行或多行字幕文字
+4. **空白行** — 字幕區塊之間的分隔符號
 
-### Timecode Format
+### 時間碼格式
 
 ```
-hours:minutes:seconds,milliseconds --> hours:minutes:seconds,milliseconds
+小時:分鐘:秒,毫秒 --> 小時:分鐘:秒,毫秒
 ```
 
-**Important notes:**
-- Hours, minutes, and seconds use 2 digits (zero-padded)
-- Milliseconds use 3 digits
-- Comma (`,`) is used as decimal separator (not period)
-- Arrow separator is ` --> ` (space-arrow-space)
+**重要注意事項：**
+- 小時、分鐘和秒使用 2 位數 (補零)
+- 毫秒使用 3 位數
+- 使用逗號 (`,`) 作為小數點分隔符號 (而非句號)
+- 箭頭分隔符號為 ` --> ` (空格-箭頭-空格)
 
-**Examples:**
+**範例：**
 ```
 00:00:01,000 --> 00:00:03,500
 00:01:15,250 --> 00:01:18,750
 01:30:45,100 --> 01:30:50,900
 ```
 
-## Basic Example
+## 基本範例
 
 ```srt
 1
@@ -72,89 +72,89 @@ It supports multiple
 lines of text.
 ```
 
-## Text Formatting
+## 文字格式設定
 
-SubRip originally supported only plain text, but modern players support HTML-like formatting tags.
+SubRip 最初僅支援純文字，但現代播放器支援類似 HTML 的格式設定標籤。
 
-### Italic
+### 斜體
 ```srt
-<i>This text is italic</i>
+<i>這是斜體文字</i>
 ```
 
-### Bold
+### 粗體
 ```srt
-<b>This text is bold</b>
+<b>這是粗體文字</b>
 ```
 
-### Underline
+### 底線
 ```srt
-<u>This text is underlined</u>
+<u>這是帶底線的文字</u>
 ```
 
-### Font Color
+### 字型顏色
 ```srt
-<font color="#ff0000">Red text</font>
-<font color="#00ff00">Green text</font>
-<font color="#0000ff">Blue text</font>
+<font color="#ff0000">紅色文字</font>
+<font color="#00ff00">綠色文字</font>
+<font color="#0000ff">藍色文字</font>
 ```
 
-**Note:** Colors are specified in hexadecimal RGB format (not BGR like ASS).
+**注意：** 顏色以十六進位 RGB 格式指定 (不像 ASS 是 BGR)。
 
-### Font Face and Size
-Some players support:
+### 字型與大小
+部分播放器支援：
 ```srt
-<font face="Arial">Arial font</font>
-<font size="24">Large text</font>
-<font face="Courier" size="18" color="#ff0000">Combined attributes</font>
+<font face="Arial">Arial 字型</font>
+<font size="24">大文字</font>
+<font face="Courier" size="18" color="#ff0000">組合屬性</font>
 ```
 
-**Note:** Font face and size support varies widely between players. Test with your target player.
+**注意：** 字型與大小的支援在不同播放器差異很大。請在目標播放器上進行測試。
 
-### Combining Formatting
+### 組合格式
 ```srt
-<b><i>Bold and italic</i></b>
-<font color="#ff0000"><b>Bold red text</b></font>
+<b><i>粗斜體</i></b>
+<font color="#ff0000"><b>粗體紅色文字</b></font>
 ```
 
-## Advanced Formatting
+## 進階格式設定
 
-### ASSA-Style Override Tags
+### ASSA 樣式覆寫標籤
 
-Many modern players support ASSA-style override tags in SubRip files, enclosed in curly braces `{}`:
+許多現代播放器支援在 SubRip 檔案中使用 ASSA 樣式的覆寫標籤，並包裝在大括號 `{}` 中：
 
-#### Alignment
+#### 對齊
 ```srt
 1
 00:00:01,000 --> 00:00:03,000
-{\an8}Top-aligned text
+{\an8}靠上對齊的文字
 
 2
 00:00:03,000 --> 00:00:05,000
-{\an2}Bottom-centered (default)
+{\an2}底部置中對齊 (預設)
 
 3
 00:00:05,000 --> 00:00:07,000
-{\an7}Top-left corner
+{\an7}左上角對齊
 ```
 
-**Alignment values (numpad-style):**
+**對齊數值 (九宮格數字鍵盤樣式)：**
 ```
-7 (Top-left)      8 (Top-center)      9 (Top-right)
-4 (Middle-left)   5 (Middle-center)   6 (Middle-right)
-1 (Bottom-left)   2 (Bottom-center)   3 (Bottom-right)
+7 (左上)      8 (頂部置中)      9 (右上)
+4 (左中)      5 (螢幕正中)      6 (右中)
+1 (左下)      2 (底部置中)      3 (右下)
 ```
 
-#### Position
+#### 位置
 ```srt
-{\pos(640,360)}Positioned at center of 1280×720 video
+{\pos(640,360)}定位在 1280×720 影片的中心
 ```
 
-#### Other ASSA Tags
-Some players support additional ASSA tags like `\fs` (font size), `\c` (color), `\bord` (border), etc. See [ASSA Override Tags](assa-override-tags.md) for details.
+#### 其他 ASSA 標籤
+部分播放器支援額外的 ASSA 標籤，如 `\fs` (字型大小)、`\c` (顏色)、`\bord` (邊框) 等。詳見 [ASSA 覆寫標籤](assa-override-tags.md)。
 
-**Compatibility note:** ASS-style tags in SRT files have inconsistent support. Always test with your target player.
+**相容性注意：** SRT 檔案中的 ASS 樣式標籤支援度不一致。務必在您的目標播放器上進行測試。
 
-## Complete Example
+## 完整範例
 
 ```srt
 1
@@ -201,149 +201,149 @@ Line two
 Line three
 ```
 
-## Character Encoding
+## 字元編碼
 
-SubRip files should be saved as:
-- **UTF-8 without BOM** (recommended, best compatibility)
-- **UTF-8 with BOM** (acceptable, but BOM may cause issues in some players)
-- **ANSI/Windows-1252** (legacy, avoid for non-ASCII characters)
+SubRip 檔案應儲存為：
+- **UTF-8 (無 BOM)** (建議，具備最佳相容性)
+- **UTF-8 (帶 BOM)** (可接受，但 BOM 在部分播放器可能會導致問題)
+- **ANSI/Windows-1252** (舊版格式，請避免用於非 ASCII 字元)
 
-**Best practice:** Always use UTF-8 without BOM for international character support.
+**最佳實務：** 永遠使用「UTF-8 (無 BOM)」以確保國際字元的支援。
 
-## Line Breaks
+## 斷行
 
-- **Single line break** — Separate lines within the same subtitle (press Enter once)
-- **Double line break** (blank line) — Separate subtitle blocks
+- **單一斷行** — 分隔同一個字幕內的行 (按一次 Enter 鍵)
+- **雙重斷行** (空白行) — 分隔不同的字幕區塊
 
-**Example:**
+**範例：**
 ```srt
 1
 00:00:01,000 --> 00:00:03,000
-First line
-Second line
+第一行
+第二行
 
 2
 00:00:03,000 --> 00:00:05,000
-Next subtitle
+下一個字幕
 ```
 
-## Common Issues and Solutions
+## 常見問題與解決方案
 
-### Issue: Timecodes not recognized
-**Problem:** Using period (`.`) instead of comma (`,`) in timecodes
+### 問題：無法識別時間碼
+**問題原因：** 時間碼中使用句號 (`.`) 而非逗號 (`,`)
 ```
-Wrong: 00:00:01.000 --> 00:00:03.000
-Right: 00:00:01,000 --> 00:00:03,000
+錯誤：00:00:01.000 --> 00:00:03.000
+正確：00:00:01,000 --> 00:00:03,000
 ```
 
-### Issue: Subtitles not appearing
-**Problem:** Missing blank line between subtitle blocks
+### 問題：字幕未顯示
+**問題原因：** 字幕區塊之間缺少空白行
 ```
-Wrong:
+錯誤：
 1
 00:00:01,000 --> 00:00:03,000
-Text one
+文字一
 2
 00:00:03,000 --> 00:00:05,000
-Text two
+文字二
 
-Right:
+正確：
 1
 00:00:01,000 --> 00:00:03,000
-Text one
+文字一
 
 2
 00:00:03,000 --> 00:00:05,000
-Text two
+文字二
 ```
 
-### Issue: HTML tags showing as text
-**Problem:** Player doesn't support HTML formatting
-**Solution:** Use a different player or convert to a format with better styling support (e.g., ASS)
+### 問題：HTML 標籤顯示為純文字
+**問題原因：** 播放器不支援 HTML 格式設定
+**解決方案：** 使用不同的播放器，或轉換成對於樣式支援較佳的格式 (例如 ASS)
 
-### Issue: Special characters not displaying
-**Problem:** Wrong character encoding
-**Solution:** Save file as UTF-8 without BOM
+### 問題：特殊字元無法顯示
+**問題原因：** 錯誤的字元編碼
+**解決方案：** 將檔案儲存為「UTF-8 (無 BOM)」
 
-### Issue: Subtitles out of sync
-**Problem:** Incorrect timecodes or frame rate mismatch
-**Solution:** Use Subtitle Edit's sync features or adjust FPS
+### 問題：字幕不同步
+**問題原因：** 不正確的時間碼或影格率不符
+**解決方案：** 使用 Subtitle Edit 的同步功能或調整 FPS
 
-## Best Practices
+## 最佳實務
 
-1. **Number sequentially:** Start at 1 and increment by 1
-2. **No overlapping times:** End time of one subtitle should be before or equal to start time of next
-3. **Use UTF-8 encoding:** Ensures international character support
-4. **Keep text concise:** Aim for 2 lines maximum, 42 characters per line
-5. **Reading time:** Allow at least 1-1.5 seconds per subtitle, longer for more text
-6. **Blank lines:** Always separate subtitle blocks with a blank line
-7. **Consistent formatting:** Use the same formatting style throughout
-8. **Test compatibility:** Always test with your target player/device
+1. **依序編號：** 從 1 開始並遞增 1
+2. **時間不要重疊：** 前一個字幕的結束時間應早於或等於下一個字幕的開始時間
+3. **使用 UTF-8 編碼：** 確保國際字元的支援
+4. **保持文字精簡：** 目標最多 2 行，每行 42 個字元
+5. **閱讀時間：** 每個字幕至少保留 1-1.5 秒，文字較多時則需更長時間
+6. **空白行：** 務必以空白行分隔每個字幕區塊
+7. **一致的格式：** 整個檔案使用相同的格式設定樣式
+8. **測試相容性：** 務必在您的目標播放器/設備上測試
 
-## Reading Time Guidelines
+## 閱讀時間指南
 
-Recommended display duration based on character count:
+依據字元數建議的顯示持續時間：
 
-| Characters | Minimum Duration | Comfortable Duration |
+| 字元數 | 最短持續時間 | 舒適持續時間 |
 |-----------|------------------|---------------------|
-| 1-20 | 1.0 seconds | 1.5 seconds |
-| 21-42 | 1.5 seconds | 2.5 seconds |
-| 43-64 | 2.5 seconds | 3.5 seconds |
-| 65-84 | 3.5 seconds | 4.5 seconds |
+| 1-20 | 1.0 秒 | 1.5 秒 |
+| 21-42 | 1.5 秒 | 2.5 秒 |
+| 43-64 | 2.5 秒 | 3.5 秒 |
+| 65-84 | 3.5 秒 | 4.5 秒 |
 
-**Note:** These are guidelines. Adjust based on language, complexity, and target audience.
+**注意：** 這些僅是指南。請依據語言、複雜度與目標受眾進行調整。
 
-## Converting to SubRip
+## 轉換為 SubRip
 
-Subtitle Edit can convert many formats to SubRip:
+Subtitle Edit 可以將許多格式轉換為 SubRip：
 
-1. Open your subtitle file
-2. Go to **File** → **Save as...**
-3. Select **SubRip (*.srt)** from format dropdown
-4. Click **Save**
+1. 開啟您的字幕檔案
+2. 前往 **檔案 (File)** → **另存新檔 (Save as...)**
+3. 從格式下拉選單選擇 **SubRip (*.srt)**
+4. 點擊 **儲存 (Save)**
 
-## Tools and Resources
+## 工具與資源
 
-### Recommended Tools
-- **Subtitle Edit** — Full-featured subtitle editor with SRT support
-- **Aegisub** — Advanced subtitle editor
-- **Visual SubSync** — Subtitle synchronization tool
-- **Subtitle Workshop** — Classic subtitle editor
+### 推薦工具
+- **Subtitle Edit** — 功能齊全且支援 SRT 的字幕編輯器
+- **Aegisub** — 進階字幕編輯器
+- **Visual SubSync** — 字幕同步工具
+- **Subtitle Workshop** — 經典的字幕編輯器
 
-### Validation
-- Use Subtitle Edit's **Tools** → **Fix common errors** to validate SRT files
-- Check for proper formatting and timing
+### 驗證
+- 使用 Subtitle Edit 的 **工具 (Tools)** → **修復常見錯誤 (Fix common errors)** 來驗證 SRT 檔案
+- 檢查格式與時間是否正確
 
-### Online Resources
-- [SubRip on VideoHelp](https://www.videohelp.com/software/Subrip) — Original tool
-- [Matroska Subtitle Specification](https://www.matroska.org/technical/subtitles.html) — Technical details
+### 線上資源
+- [VideoHelp 上的 SubRip](https://www.videohelp.com/software/Subrip) — 原始工具
+- [Matroska 字幕規範](https://www.matroska.org/technical/subtitles.html) — 技術細節
 
-## Technical Specifications
+## 技術規格
 
-| Property | Value |
+| 屬性 | 值 |
 |----------|-------|
-| **File Extension** | `.srt` |
-| **MIME Type** | `application/x-subrip`, `text/srt` |
-| **Character Encoding** | UTF-8 (recommended), UTF-8 with BOM, ANSI |
-| **Line Endings** | Windows (CRLF), Unix (LF), or Mac (CR) |
-| **Timecode Format** | `HH:MM:SS,mmm --> HH:MM:SS,mmm` |
-| **Timecode Precision** | Milliseconds (3 digits) |
-| **Maximum File Size** | No limit (typically a few KB to MB) |
+| **副檔名** | `.srt` |
+| **MIME 類型** | `application/x-subrip`, `text/srt` |
+| **字元編碼** | UTF-8 (建議), UTF-8 (帶 BOM), ANSI |
+| **行結尾** | Windows (CRLF), Unix (LF), 或 Mac (CR) |
+| **時間碼格式** | `HH:MM:SS,mmm --> HH:MM:SS,mmm` |
+| **時間碼精度** | 毫秒 (3 位數) |
+| **檔案大小上限** | 無限制 (通常為幾 KB 到數 MB) |
 
-## See Also
+## 另請參閱
 
-- [WebVTT Format](webvtt.md) — Modern HTML5 subtitle format with advanced features
-- [ASSA Format](assa.md) — Advanced Sub Station Alpha format
-- [ASSA Override Tags](assa-override-tags.md) — ASS-style tags reference
-- [Supported Formats](supported-formats.md) — All formats supported by Subtitle Edit
-- [Command Line](command-line.md) — Batch conversion with Subtitle Edit
+- [WebVTT 格式](webvtt.md) — 現代 HTML5 字幕格式，具備進階功能
+- [ASSA 格式](assa.md) — Advanced Sub Station Alpha 格式
+- [ASSA 覆寫標籤](assa-override-tags.md) — ASS 樣式標籤參考
+- [支援的格式](supported-formats.md) — Subtitle Edit 支援的所有格式
+- [命令列](command-line.md) — 使用 Subtitle Edit 進行批次轉換
 
-## Version History
+## 版本歷史紀錄
 
-SubRip format has evolved over time:
-- **2000** — Original SubRip format (plain text only)
-- **2000s** — HTML-like tags added (italic, bold, underline)
-- **2010s** — ASS-style override tags support in some players
-- **Present** — Widely supported with varying levels of formatting support
+SubRip 格式隨著時間發展：
+- **2000 年** — 原始的 SubRip 格式 (僅純文字)
+- **2000 年代** — 新增類似 HTML 的標籤 (斜體、粗體、底線)
+- **2010 年代** — 某些播放器開始支援 ASS 樣式覆寫標籤
+- **現在** — 廣泛支援，但對格式設定的支援程度不一
 
-**Note:** There is no official specification for SubRip. The format is defined by common practice and player implementations.
+**注意：** SubRip 沒有官方的規範。此格式是由常見的使用習慣與播放器的實作所定義的。
